@@ -1,0 +1,44 @@
+import { IonContent, IonFooter, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import './Home.css';
+
+function Example() {
+  const neptuneImageUrl ='https://i.seadn.io/gae/2bBWp5GeqrTPuhMz9BrtLHjJ-_eh-HTASyKZ35oUcSrUY7sXrUGRvq47rbt0z7jUREm0nmGYvfYMqgZtbLN-IKPJlU5Gx6P1Bv1oIQ?auto=format&dpr=1&w=1000';
+  const neptuneLink = 'https://example.com/neptune';
+
+  
+  return (
+    <>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Blank Space</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent className="content">
+        <div className="background-image"></div>
+        <div className="container">
+          <a
+            href={neptuneLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="container-image-link"
+          >
+            <img src={neptuneImageUrl} alt="Neptune" className="container-image" />
+          </a>
+          <div className="container-text">NETUNE</div>
+          <div className="description-text">
+            <p>NEPTUNE IS THE EIGHTH PLANET FROM THE SUN, KNOWN FOR ITS DEEP BLUE COLOR DUE TO METHANE IN ITS ATMOSPHERE. IT HAS STRONG WINDS AND A FAINTER RING SYSTEM, MAKING IT THE FARTHEST GAS GIANT IN THE SOLAR SYSTEM.</p>
+          </div>
+        </div>
+      </IonContent>
+
+      <IonFooter>
+        <IonToolbar>
+          <IonTitle>Footer</IonTitle>
+        </IonToolbar>
+      </IonFooter>
+    </>
+  );
+}
+
+export default Example;

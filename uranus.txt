@@ -1,0 +1,44 @@
+import { IonContent, IonFooter, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import './Home.css';
+
+function Example() {
+  const uranusImageUrl ='https://static.vecteezy.com/system/resources/thumbnails/048/106/065/small_2x/blue-planet-pixel-art-png.png';
+  const uranusLink = 'https://example.com/uranus';
+
+  
+  return (
+    <>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Blank Space</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent className="content">
+        <div className="background-image"></div>
+        <div className="container">
+          <a
+            href={uranusLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="container-image-link"
+          >
+            <img src={uranusImageUrl} alt="Uranus" className="container-image" />
+          </a>
+          <div className="container-text">URANUS</div>
+          <div className="description-text">
+            <p>URANUS IS THE SEVENTH PLANET FROM THE SUN, NOTED FOR ITS UNIQUE SIDEWAYS ROTATION AND FAINT RINGS. IT HAS A BLUE COLOR DUE TO METHANE IN ITS ATMOSPHERE AND IS ONE OF THE LARGEST GAS GIANTS.</p>
+          </div>
+        </div>
+      </IonContent>
+
+      <IonFooter>
+        <IonToolbar>
+          <IonTitle>Footer</IonTitle>
+        </IonToolbar>
+      </IonFooter>
+    </>
+  );
+}
+
+export default Example;

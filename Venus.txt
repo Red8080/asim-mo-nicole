@@ -1,0 +1,44 @@
+import { IonContent, IonFooter, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import './Home.css';
+
+function Example() {
+  const venusImageUrl ='https://i.seadn.io/gae/wCTL3tECeacHsQRgv8X-yx1L1wZXl76pPcKPgweRi-HXKqj_mu__QMKq_mQ7mQBYETFtL6fSXjVnPmCQ7oAB8vf4S9Fi0hhUcrBL9A?auto=format&dpr=1&w=384';
+  const venusLink = 'https://example.com/venus';
+
+  
+  return (
+    <>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Blank Space</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent className="content">
+        <div className="background-image"></div>
+        <div className="container">
+          <a
+            href={venusLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="container-image-link"
+          >
+            <img src={venusImageUrl} alt="Venus" className="container-image" />
+          </a>
+          <div className="container-text">VENUS</div>
+          <div className="description-text">
+            <p>VENUS IS THE SECOND PLANET FROM THE SUN, KNOWN FOR ITS THICK, TOXIC ATMOSPHERE AND EXTREME HEAT, WITH SURFACE TEMPERATURES AROUND 900°F (475°C). OFTEN CALLED EARTH'S "SISTER PLANET," IT HAS A SLOW ROTATION AND A SURFACE MARKED BY VOLCANIC PLAINS.</p>
+          </div>
+        </div>
+      </IonContent>
+
+      <IonFooter>
+        <IonToolbar>
+          <IonTitle>Footer</IonTitle>
+        </IonToolbar>
+      </IonFooter>
+    </>
+  );
+}
+
+export default Example;

@@ -1,0 +1,44 @@
+import { IonContent, IonFooter, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import './Home.css';
+
+function Example() {
+  const marsImageUrl ='https://openseauserdata.com/files/fe26e80b6d3670342a9816edfe2390fc.png';
+  const marsLink = 'https://example.com/mars';
+
+  
+  return (
+    <>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Blank Space</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent className="content">
+        <div className="background-image"></div>
+        <div className="container">
+          <a
+            href={marsLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="container-image-link"
+          >
+            <img src={marsImageUrl} alt="Mars" className="container-image" />
+          </a>
+          <div className="container-text">MARS</div>
+          <div className="description-text">
+            <p>MARS IS THE FOURTH PLANET FROM THE SUN, KNOWN AS THE "RED PLANET" DUE TO ITS IRON OXIDE-RICH SOIL. IT HAS A THIN ATMOSPHERE, POLAR ICE CAPS, AND FEATURES LIKE VOLCANOES AND CANYONS, MAKING IT A FOCUS FOR EXPLORATION.</p>
+          </div>
+        </div>
+      </IonContent>
+
+      <IonFooter>
+        <IonToolbar>
+          <IonTitle>Footer</IonTitle>
+        </IonToolbar>
+      </IonFooter>
+    </>
+  );
+}
+
+export default Example;

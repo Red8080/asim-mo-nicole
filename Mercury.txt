@@ -1,0 +1,44 @@
+import { IonContent, IonFooter, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import './Home.css';
+
+function Example() {
+  const mercuryImageUrl ='https://openseauserdata.com/files/6ae921fc86fee3c6592f5f217209083d.png';
+  const mercuryLink = 'https://example.com/mercury';
+
+  
+  return (
+    <>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Blank Space</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent className="content">
+        <div className="background-image"></div>
+        <div className="container">
+          <a
+            href={mercuryLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="container-image-link"
+          >
+            <img src={mercuryImageUrl} alt="Mercury" className="container-image" />
+          </a>
+          <div className="container-text">MERCURY</div>
+          <div className="description-text">
+            <p>MERCURY IS THE SMALLEST AND CLOSEST PLANET TO THE SUN, KNOWN FOR ITS EXTREME TEMPERATURE VARIATIONS AND CRATERED, ROCKY SURFACE. IT HAS A THIN ATMOSPHERE AND COMPLETES AN ORBIT IN JUST 88 EARTH DAYS.</p>
+          </div>
+        </div>
+      </IonContent>
+
+      <IonFooter>
+        <IonToolbar>
+          <IonTitle>Footer</IonTitle>
+        </IonToolbar>
+      </IonFooter>
+    </>
+  );
+}
+
+export default Example;

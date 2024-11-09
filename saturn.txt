@@ -1,0 +1,44 @@
+import { IonContent, IonFooter, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import './Home.css';
+
+function Example() {
+  const saturnImageUrl ='https://i.seadn.io/gae/Y8p-LrKZgkcJwdkW9tzxb8T2PVbfCITi-x-25WLAntUsS_UKzrmO8jxnn6u-n2k9UyN2-ukyp-8t6H92-8vk_XK8wzaqh9UBWXStJQ?auto=format&dpr=1&w=384';
+  const saturnLink = 'https://example.com/saturn';
+
+  
+  return (
+    <>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Blank Space</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent className="content">
+        <div className="background-image"></div>
+        <div className="container">
+          <a
+            href={saturnLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="container-image-link"
+          >
+            <img src={saturnImageUrl} alt="Saturn" className="container-image" />
+          </a>
+          <div className="container-text">SATRUN</div>
+          <div className="description-text">
+            <p>SATURN IS THE SIXTH PLANET FROM THE SUN, FAMOUS FOR ITS SPECTACULAR RINGS MADE OF ICE AND ROCK PARTICLES. IT IS THE SECOND LARGEST PLANET IN THE SOLAR SYSTEM AND HAS MANY MOONS.</p>
+          </div>
+        </div>
+      </IonContent>
+
+      <IonFooter>
+        <IonToolbar>
+          <IonTitle>Footer</IonTitle>
+        </IonToolbar>
+      </IonFooter>
+    </>
+  );
+}
+
+export default Example;

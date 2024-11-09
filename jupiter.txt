@@ -1,0 +1,44 @@
+import { IonContent, IonFooter, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import './Home.css';
+
+function Example() {
+  const jupiterImageUrl ='https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b0b7f079-2f3a-4895-8dda-4f6bdb7a6659/db8siqg-5bf31fee-df61-41c2-8a40-3581c95fb16f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2IwYjdmMDc5LTJmM2EtNDg5NS04ZGRhLTRmNmJkYjdhNjY1OVwvZGI4c2lxZy01YmYzMWZlZS1kZjYxLTQxYzItOGE0MC0zNTgxYzk1ZmIxNmYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.teUfI74QRgos6JUEmAbg9IuH5uYbtoFdlQ0lnAdaFFI';
+  const jupiterLink = 'https://example.com/jupiter';
+
+  
+  return (
+    <>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Blank Space</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent className="content">
+        <div className="background-image"></div>
+        <div className="container">
+          <a
+            href={jupiterLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="container-image-link"
+          >
+            <img src={jupiterImageUrl} alt="Jupiter" className="container-image" />
+          </a>
+          <div className="container-text">JUPITER</div>
+          <div className="description-text">
+            <p>JUPITER IS THE LARGEST PLANET IN THE SOLAR SYSTEM, KNOWN FOR ITS GREAT RED SPOT, A HUGE STORM, AND ITS MANY MOONS. IT HAS A THICK ATMOSPHERE COMPOSED MAINLY OF HYDROGEN AND HELIUM.</p>
+          </div>
+        </div>
+      </IonContent>
+
+      <IonFooter>
+        <IonToolbar>
+          <IonTitle>Footer</IonTitle>
+        </IonToolbar>
+      </IonFooter>
+    </>
+  );
+}
+
+export default Example;

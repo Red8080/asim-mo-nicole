@@ -1,0 +1,44 @@
+import { IonContent, IonFooter, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import './Home.css';
+
+function Example() {
+  const earthImageUrl ='https://i.seadn.io/gae/Ou8NsG0vKnbK01KMTGW0ZlDAuNkDQUwKP0aNfsunNdZCML2ZNRrpjjoL28x7VC17EXI0WmRECk2CDpOc4gQGvHSK616tEgbgtBFocA?auto=format&dpr=1&w=1000';
+  const earthLink = 'https://example.com/earth';
+
+  
+  return (
+    <>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Blank Space</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent className="content">
+        <div className="background-image"></div>
+        <div className="container">
+          <a
+            href={earthLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="container-image-link"
+          >
+            <img src={earthImageUrl} alt="Earth" className="container-image" />
+          </a>
+          <div className="container-text">EARTH</div>
+          <div className="description-text">
+            <p>EARTH IS THE THIRD PLANET FROM THE SUN AND THE ONLY KNOWN BODY IN THE UNIVERSE TO SUPPORT LIFE. IT HAS A DIVERSE CLIMATE, LANDSCAPES, AND AN ATMOSPHERE RICH IN OXYGEN AND WATER.</p>
+          </div>
+        </div>
+      </IonContent>
+
+      <IonFooter>
+        <IonToolbar>
+          <IonTitle>Footer</IonTitle>
+        </IonToolbar>
+      </IonFooter>
+    </>
+  );
+}
+
+export default Example;
