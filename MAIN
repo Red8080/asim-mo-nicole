@@ -1,0 +1,61 @@
+import React from 'react';
+import { IonContent, IonFooter, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import './Home.css'; 
+
+// Array of image URLs
+const imageUrls = [
+  'https://openseauserdata.com/files/6ae921fc86fee3c6592f5f217209083d.png',
+  'https://i.seadn.io/gae/wCTL3tECeacHsQRgv8X-yx1L1wZXl76pPcKPgweRi-HXKqj_mu__QMKq_mQ7mQBYETFtL6fSXjVnPmCQ7oAB8vf4S9Fi0hhUcrBL9A?auto=format&dpr=1&w=384',
+  'https://i.seadn.io/gae/Ou8NsG0vKnbK01KMTGW0ZlDAuNkDQUwKP0aNfsunNdZCML2ZNRrpjjoL28x7VC17EXI0WmRECk2CDpOc4gQGvHSK616tEgbgtBFocA?auto=format&dpr=1&w=1000',
+  'https://openseauserdata.com/files/fe26e80b6d3670342a9816edfe2390fc.png',
+  'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b0b7f079-2f3a-4895-8dda-4f6bdb7a6659/db8siqg-5bf31fee-df61-41c2-8a40-3581c95fb16f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2IwYjdmMDc5LTJmM2EtNDg5NS04ZGRhLTRmNmJkYjdhNjY1OVwvZGI4c2lxZy01YmYzMWZlZS1kZjYxLTQxYzItOGE0MC0zNTgxYzk1ZmIxNmYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.teUfI74QRgos6JUEmAbg9IuH5uYbtoFdlQ0lnAdaFFI',
+  'https://i.seadn.io/gae/Y8p-LrKZgkcJwdkW9tzxb8T2PVbfCITi-x-25WLAntUsS_UKzrmO8jxnn6u-n2k9UyN2-ukyp-8t6H92-8vk_XK8wzaqh9UBWXStJQ?auto=format&dpr=1&w=384',
+  'https://static.vecteezy.com/system/resources/thumbnails/048/106/065/small_2x/blue-planet-pixel-art-png.png',
+  'https://i.seadn.io/gae/2bBWp5GeqrTPuhMz9BrtLHjJ-_eh-HTASyKZ35oUcSrUY7sXrUGRvq47rbt0z7jUREm0nmGYvfYMqgZtbLN-IKPJlU5Gx6P1Bv1oIQ?auto=format&dpr=1&w=1000',
+];
+
+// image
+const containerTexts = [
+  "MERCURY",
+  "VENUS",
+  "EARTH",
+  "MARS",
+  "JUPITER",
+   "SATURN",
+  "URANUS",
+  "NEPTUNE"
+];
+
+function Example() {
+  return (
+    <>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Blank Space</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent className="content">
+        <div className="background-image"></div>
+        <div className="container-grid">
+          {imageUrls.map((url, index) => (
+            <div className="container" key={index}>
+              <img src={url} alt={`Container ${index + 1}`} className="container-image" />
+              <div className="container-text">
+                <p>{containerTexts[index]}</p> {/* Display unique text */}
+              </div>
+            </div>
+          ))}
+        </div>
+      </IonContent>
+
+      <IonFooter>
+        <IonToolbar>
+          <IonTitle>Footer</IonTitle>
+        </IonToolbar>
+      </IonFooter>
+    </>
+  );
+}
+
+export default Example;
