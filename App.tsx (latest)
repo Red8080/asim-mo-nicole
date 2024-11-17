@@ -1,0 +1,70 @@
+import { Redirect, Route, useHistory } from 'react-router-dom';
+import { IonApp, IonButton, IonContent, IonHeader, IonRouterOutlet, IonTitle, IonToolbar, setupIonicReact } from '@ionic/react';
+import { IonReactRouter } from '@ionic/react-router';
+import Home from './pages/Home';
+import PlanetPage from './pages/PlanetPage';
+import EarthPage from './pages/EarthPage';
+import VenusPage from './pages/VenusPage';
+import MercuryPage from './pages/MercuryPage';
+import SplashPage from './pages/SplashPage';
+
+
+
+/* Core CSS required for Ionic components to work properly */
+import '@ionic/react/css/core.css';
+
+/* Basic CSS for apps built with Ionic */
+import '@ionic/react/css/normalize.css';
+import '@ionic/react/css/structure.css';
+import '@ionic/react/css/typography.css';
+
+/* Optional CSS utils that can be commented out */
+import '@ionic/react/css/padding.css';
+import '@ionic/react/css/float-elements.css';
+import '@ionic/react/css/text-alignment.css';
+import '@ionic/react/css/text-transformation.css';
+import '@ionic/react/css/flex-utils.css';
+import '@ionic/react/css/display.css';
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* import '@ionic/react/css/palettes/dark.always.css'; */
+/* import '@ionic/react/css/palettes/dark.class.css'; */
+import '@ionic/react/css/palettes/dark.system.css';
+
+/* Theme variables */
+import './theme/variables.css';
+
+/* Import your PlanetPage.css and EarthPage.css files here */
+import './pages/PlanetPage.css';
+import './pages/EarthPage.css';
+import './pages/VenusPage.css';
+
+setupIonicReact();
+
+const App: React.FC = () => (
+    <IonApp>
+    <IonReactRouter>
+      <IonRouterOutlet>
+        <Route exact path="/home">
+          <Home />
+        </Route>
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+        <Route path="/splash-page" component={SplashPage} exact />
+        <Route path="/planet-page" component={PlanetPage} exact />
+        <Route path="/earth-page" component={EarthPage} exact />
+        <Route path="/venus-page" component={VenusPage} exact />
+        <Route path="/mercury-page" component={MercuryPage} exact />
+      </IonRouterOutlet>
+    </IonReactRouter>
+  </IonApp>
+);
+
+export default App;
