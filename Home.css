@@ -1,0 +1,186 @@
+/* Splash Screen CSS */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes idleAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes descriptionFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.content {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.container-logo {
+  width: 800px;
+  height: auto;
+  margin-bottom: 50px;
+  position: relative;
+  top: -90px;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.container-logo-link {
+  display: block;
+  text-decoration: none;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('BGgalaxy.jpeg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  filter: brightness(0.8);
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #ebe2e200;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.container-image {
+  width: 150px;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 100px;
+}
+
+.container-text {
+  font-size: 30px;
+  color: #ffffff;
+  line-height: 1.4;
+  font-weight: bold;
+  font-family: pixel;
+  margin-top: -230px;
+  animation: slideUp 2s ease-out;
+}
+
+@font-face {
+  font-family: pixel;
+  src: url(PixelatedDisplay.ttf);
+}
+
+.description-text {
+  font-size: 15px;
+  color: #ffffff;
+  line-height: 1.4;
+  font-weight: bold;
+  font-family: pixel;
+  animation: slideUp 2.5s ease-out, idleAnimation 3s infinite ease-in-out, descriptionFadeIn 2s ease-in-out;
+  padding-bottom: 100px;
+  text-align: center;
+  
+}
+
+/* Sound Toggle Button Styling */
+.sound-toggle {
+  position: absolute;
+  bottom: 20px; /* Adjust as needed */
+  left: 20px; /* Adjust as needed */
+  z-index: 10;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sound-toggle.sound-on {
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+.sound-toggle.sound-off {
+  transform: rotate(180deg); /* Rotate for animation effect */
+  opacity: 0.6; /* Dim when sound is off */
+}
+
+.sound-toggle:hover {
+  transform: scale(1.2); /* Slight scale effect on hover */
+  opacity: 1; /* Full opacity on hover */
+}
+
+.go-back-button {
+  font-family: pixel; /* Or use your custom font */
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff; /* Text color */
+  text-decoration: none; /* Remove underline */
+  background: none; /* No background */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor */
+  padding: 10px 20px; /* Add padding */
+  position: absolute; /* Use absolute positioning */
+  bottom: 80px; /* Position it 20px from the bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Offset to perfectly center */
+  z-index: 10; /* Ensure it appears on top of other elements */
+  transition: color 0.3s ease; /* Smooth hover transition */
+}
+
+/* Hover effect */
+.go-back-button:hover {
+  color: #ddd; /* Slightly lighter text on hover */
+}
