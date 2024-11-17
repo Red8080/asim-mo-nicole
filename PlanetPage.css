@@ -1,0 +1,82 @@
+.planet-page {
+  background-image: url('https://cdn.mos.cms.futurecdn.net/HuGGeENt6kGyixe3hT9tnY.jpg');
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'pixel', sans-serif;
+  color: white;
+  position: relative;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+}
+
+/* Rotate animation applied only to the planet image */
+.container-image {
+  width: 1000px; /* Adjust this size to your preference */
+  height: auto;
+  animation: planetRotation 10s infinite linear; /* Apply rotation animation */
+}
+
+.button-group {
+  margin-top: 80px;
+  display: flex;
+  gap: 20px;
+}
+
+.icon-button {
+  background-color: rgba(255, 255, 255, 0); /* Make background transparent */
+  padding: 0;
+  border: none;
+  color: rgb(255, 255, 255); /* Adjust color to match your theme */
+  font-size: 36px; /* Adjust icon size as needed */
+}
+
+.tap-info-text {
+  font-family: 'pixel', sans-serif;
+  font-size: 18px; /* Adjust size as needed */
+  color: white;
+  text-align: center;
+  margin-bottom: -30px; /* Adjust spacing as needed */
+  animation: fadeInOut 2s infinite; /* Apply animation */
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0; /* Fully transparent at start and end */
+  }
+  50% {
+    opacity: 1; /* Fully visible at midpoint */
+  }
+}
+
+/* Rotating animation for the planets */
+@keyframes planetRotation {
+  0% {
+    transform: rotate(0deg); /* Start at 0 degrees */
+  }
+  100% {
+    transform: rotate(360deg); /* Rotate 360 degrees */
+  }
+}
+
+/* Floating up and down animation for Saturn */
+@keyframes planetIdleAnimation {
+  0% {
+    transform: translateY(0); /* Normal position */
+  }
+  50% {
+    transform: translateY(-10px); /* Float up slightly */
+  }
+  100% {
+    transform: translateY(0); /* Back to normal position */
+  }
+}
