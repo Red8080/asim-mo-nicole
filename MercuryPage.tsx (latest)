@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   IonContent,
   IonFooter,
@@ -6,9 +7,9 @@ import {
   IonToolbar,
   IonButton,
 } from '@ionic/react';
-import './MercuryPage.css';
+import './MercuryPage.css';  // Keep the styles for MercuryPage here
 
-function Example() {
+function MercuryPage() {
   const mercuryImageUrl = 'https://openseauserdata.com/files/6ae921fc86fee3c6592f5f217209083d.png';
   const mercuryLink = 'https://example.com/mercury';
 
@@ -18,7 +19,7 @@ function Example() {
   };
 
   return (
-    <>
+    <div className="mercury-page"> {/* Add a unique class for Mercury Page */}
       <IonHeader>
         <IonToolbar>
           <IonTitle>Blank Space</IonTitle>
@@ -46,13 +47,9 @@ function Example() {
         </div>
 
         {/* GO BACK BUTTON */}
-        <IonButton
-          className="go-back-button"
-          onClick={goBack}
-          style={{ position: 'fixed', bottom: '20px', left: '20px', zIndex: 10 }}
-        >
-          GO BACK
-        </IonButton>
+      <IonButton className="Mercury-go-back-button" onClick={goBack}>
+  GO BACK
+</IonButton>
       </IonContent>
 
       <IonFooter>
@@ -60,8 +57,8 @@ function Example() {
           <IonTitle>Footer</IonTitle>
         </IonToolbar>
       </IonFooter>
-    </>
+    </div>  
   );
 }
 
-export default Example;
+export default MercuryPage;
