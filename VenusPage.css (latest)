@@ -1,3 +1,5 @@
+VenusPage.css
+
 .content {
   height: 100vh;
   overflow: hidden;
@@ -59,29 +61,87 @@
   line-height: 1.4;
   font-weight: bold;
   font-family: pixel;
-  margin-top: 250px;
+  margin-top: 100px;
 
 }
+
+
+/* Go Back Button - fixed at the bottom */
 .go-back-button {
-  font-family: pixel; /* Or use your custom font */
+  position: fixed;
+  font-family: pixel;
+  bottom: 20px;
+  left: 28%; /* Center horizontally */
+  transform: translateX(-50%); /* Centering trick */
+  z-index: 10;
+  padding: 12px 20px;
+  color: white;
+  background: transparent; /* Transparent background */
+  border: 2px solid #e70bcd; /* Border color */
+  border-radius: 8px; /* Rounded corners */
   font-size: 20px;
-  font-weight: bold;
-  color: #ffffff; /* Text color */
-  text-decoration: none; /* Remove underline */
-  background: none; /* No background */
-  border: none; /* No border */
-  cursor: pointer; /* Pointer cursor */
-  padding: 10px 20px; /* Add padding */
-  position: absolute; /* Use absolute positioning */
-  bottom: 80px; /* Position it 20px from the bottom */
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Offset to perfectly center */
-  z-index: 10; /* Ensure it appears on top of other elements */
-  transition: color 0.3s ease; /* Smooth hover transition */
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover and animation */
+  animation: idlePulse 2s infinite ease-in-out; /* Idling animation */
+}
+
+/* Remove the default browser blue outline */
+.go-back-button:focus {
+  outline: none; /* No focus outline */
+}
+.go-back-button {
+  background-color: transparent;
+  color: white;  /* Optional: Change the text color to white for better visibility */
+  border: 2px solid white; /* Optional: Add a border for better definition */
+}
+
+.go-back-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);  /* Optional: Add a slight white background on hover */
+}
+
+
+/* Idling animation for button (gentle pulsing) */
+@keyframes idlePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1); /* Slightly larger */
+    opacity: 0.8;
+  }
 }
 
 /* Hover effect */
 .go-back-button:hover {
-  color: #ddd; /* Slightly lighter text on hover */
+  background: #e70bcd; /* Add hover background color */
+  color: white; /* Keep text color white */
+  transform: scale(1.05); /* Slightly grow on hover */
+  box-shadow: 0px 0px 10px #e70bcd; /* Glow effect */
 }
 
+/* Click effect (animation) */
+.go-back-button:active {
+  transform: scale(0.95); /* Shrink slightly when clicked */
+  background: #e70bcd; /* Keep the background color */
+  color: #fff;
+  box-shadow: 0px 0px 5px #e70bcd; /* Slightly smaller glow on click */
+  animation: clickEffect 0.2s ease-out; /* Apply click animation */
+}
+
+/* Click animation */
+@keyframes clickEffect {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+  
