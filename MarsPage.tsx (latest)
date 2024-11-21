@@ -1,0 +1,53 @@
+import React from 'react';
+import { IonButton, IonContent, IonFooter, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import { useHistory } from 'react-router-dom'; // Use useHistory for React Router v5
+import './MarsPage.css';
+
+function MarsPage() {
+  const marsImageUrl = 'https://openseauserdata.com/files/fe26e80b6d3670342a9816edfe2390fc.png';
+
+  const history = useHistory(); // Use useHistory hook
+
+  const handleGoBack = () => {
+    history.push('/planet-page'); // Navigate back to planet-page
+  };
+
+  return (
+    <>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Mars Page</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent className="content">
+        <div className="background-image"></div>
+        <div className="container">
+          <a
+            href={marsImageUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="container-image-link"
+          >
+            <img src={marsImageUrl} alt="Mars" className="container-image" />
+          </a>
+          <div className="container-text">MARS</div>
+          <div className="description-text">
+            <p>MARS IS THE FOURTH PLANET FROM THE SUN AND IS KNOWN FOR ITS RED DUST, THIN ATMOSPHERE, AND POSSIBILITY OF PAST WATER FLOWS. IT IS A PRIMARY TARGET FOR EXPLORATION AND POSSIBLE COLONIZATION.</p>
+          </div>
+        </div>
+        <IonButton className="mars-go-back-button" onClick={handleGoBack}>
+          GO BACK
+        </IonButton>
+      </IonContent>
+
+      <IonFooter>
+        <IonToolbar>
+          <IonTitle>Footer</IonTitle>
+        </IonToolbar>
+      </IonFooter>
+    </>
+  );
+}
+
+export default MarsPage;
