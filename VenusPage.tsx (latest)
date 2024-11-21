@@ -1,25 +1,22 @@
 import React from 'react';
-import { IonContent, IonFooter, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/react';
-import { useHistory } from 'react-router-dom'; // Import useHistory for navigation
-import './VenusPage.css';
+import { IonButton, IonContent, IonFooter, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import { useHistory } from 'react-router-dom';  // Use useHistory for React Router v5
+import './MarsPage.css';
 
-function VenusPage() {
-  const history = useHistory(); // Initialize history hook
-  
-  const venusImageUrl =
-    'https://i.seadn.io/gae/wCTL3tECeacHsQRgv8X-yx1L1wZXl76pPcKPgweRi-HXKqj_mu__QMKq_mQ7mQBYETFtL6fSXjVnPmCQ7oAB8vf4S9Fi0hhUcrBL9A?auto=format&dpr=1&w=384';
-  const venusLink = 'https://example.com/venus';
+function MarsPage() {
+  const marsImageUrl = 'https://openseauserdata.com/files/fe26e80b6d3670342a9816edfe2390fc.png';
 
-  // Go back to the previous page when the button is clicked
-  const goBack = () => {
-    history.goBack();
+  const history = useHistory();  // Use useHistory hook for navigation in v5
+
+  const handleGoBack = () => {
+    history.push('/planet-page');  // Use history.push to navigate to the desired route
   };
 
   return (
     <>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Venus</IonTitle>
+          <IonTitle>Mars Page</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -27,22 +24,21 @@ function VenusPage() {
         <div className="background-image"></div>
         <div className="container">
           <a
-            href={venusLink}
+            href={marsImageUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="container-image-link"
           >
-            <img src={venusImageUrl} alt="Venus" className="container-image" />
+            <img src={marsImageUrl} alt="Mars" className="container-image" />
           </a>
-          <div className="container-text">VENUS</div>
+          <div className="container-text">MARS</div>
           <div className="description-text">
-            <p>
-              VENUS IS THE SECOND PLANET FROM THE SUN, KNOWN FOR ITS THICK, TOXIC ATMOSPHERE AND EXTREME HEAT, WITH SURFACE TEMPERATURES AROUND 900°F (475°C).
-              OFTEN CALLED EARTH'S "SISTER PLANET," IT HAS A SLOW ROTATION AND A SURFACE MARKED BY VOLCANIC PLAINS.
-            </p>
+            <p>MARS IS THE FOURTH PLANET FROM THE SUN AND IS KNOWN FOR ITS RED DUST, THIN ATMOSPHERE, AND POSSIBILITY OF PAST WATER FLOWS. IT IS A PRIMARY TARGET FOR EXPLORATION AND POSSIBLE COLONIZATION.</p>
           </div>
         </div>
-        
+        <IonButton className="go-back-button" onClick={handleGoBack}>
+          GO BACK
+        </IonButton>
       </IonContent>
 
       <IonFooter>
@@ -50,17 +46,8 @@ function VenusPage() {
           <IonTitle>Footer</IonTitle>
         </IonToolbar>
       </IonFooter>
-
-      {/* Go Back Button */}
-      <IonButton
-        className="go-back-button"
-        onClick={goBack}
-        style={{ position: 'fixed', bottom: '20px', left: '20px', zIndex: 10 }}
-      >
-        GO BACK
-      </IonButton>
     </>
   );
 }
 
-export default VenusPage;
+export default MarsPage;
