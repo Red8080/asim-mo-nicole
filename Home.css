@@ -1,5 +1,42 @@
-/* Splash Screen CSS */
+/* General body and html styling */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent scrolling */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
+/* Ensure content scales to different devices */
+.content {
+  height: 100%; /* Full height */
+  width: 100%; /* Full width */
+  position: relative; /* For absolute positioning of child elements */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically and horizontally */
+  overflow: hidden; /* Prevent scrolling inside content */
+}
+
+/* Background image styling */
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  background-image: url('BGgalaxy.jpeg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  filter: brightness(0.8);
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* Fade-in animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -9,6 +46,40 @@
   }
 }
 
+/* Container styling */
+.container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  animation: slideUp 2s ease-out;
+}
+
+/* Slide-up animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Logo styling */
+.container-logo {
+  width: 70%; /* Responsive width */
+  max-width: 800px; /* Max width for larger screens */
+  height: auto;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Pulse animation */
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -21,17 +92,20 @@
   }
 }
 
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+/* Description text styling */
+.description-text {
+  font-size: 2vw; /* Responsive font size */
+  max-width: 80%;
+  color: #ffffff;
+  line-height: 1.4;
+  font-weight: bold;
+  font-family: pixel;
+  animation: descriptionFadeIn 2.5s ease-in-out, idleAnimation 3s infinite ease-in-out;
+  text-align: center;
+  padding: 0 10px;
 }
 
+/* Idle float animation for the description text */
 @keyframes idleAnimation {
   0% {
     transform: translateY(0);
@@ -44,6 +118,7 @@
   }
 }
 
+/* Fade-in for the description text */
 @keyframes descriptionFadeIn {
   from {
     opacity: 0;
@@ -53,134 +128,134 @@
   }
 }
 
-.content {
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: fadeIn 2s ease-in-out;
-}
-
-.container-logo {
-  width: 800px;
-  height: auto;
-  margin-bottom: 50px;
-  position: relative;
-  top: -90px;
-  animation: pulse 2s infinite ease-in-out;
-}
-
-.container-logo-link {
-  display: block;
-  text-decoration: none;
-}
-
-.background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('BGgalaxy.jpeg');
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-  filter: brightness(0.8);
-}
-
-.container {
-  background-color: rgba(255, 255, 255, 0);
-  border: 1px solid #ebe2e200;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 100px;
-}
-
-.container-image {
-  width: 150px;
-  height: auto;
-  border-radius: 4px;
-  margin-bottom: 100px;
-}
-
-.container-text {
-  font-size: 30px;
-  color: #ffffff;
-  line-height: 1.4;
-  font-weight: bold;
-  font-family: pixel;
-  margin-top: -230px;
-  animation: slideUp 2s ease-out;
-}
-
-@font-face {
-  font-family: pixel;
-  src: url(PixelatedDisplay.ttf);
-}
-
-.description-text {
-  font-size: 15px;
-  color: #ffffff;
-  line-height: 1.4;
-  font-weight: bold;
-  font-family: pixel;
-  animation: slideUp 2.5s ease-out, idleAnimation 3s infinite ease-in-out, descriptionFadeIn 2s ease-in-out;
-  padding-bottom: 100px;
-  text-align: center;
-  
-}
-
-/* Sound Toggle Button Styling */
+/* Sound toggle button */
 .sound-toggle {
   position: absolute;
-  bottom: 20px; /* Adjust as needed */
-  left: 20px; /* Adjust as needed */
+  bottom: 20px;
+  right: 20px;
   z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 10px;
   transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.sound-toggle.sound-on {
-  transform: rotate(0deg);
-  opacity: 1;
-}
-
-.sound-toggle.sound-off {
-  transform: rotate(180deg); /* Rotate for animation effect */
-  opacity: 0.6; /* Dim when sound is off */
 }
 
 .sound-toggle:hover {
   transform: scale(1.2); /* Slight scale effect on hover */
-  opacity: 1; /* Full opacity on hover */
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
+/* Footer button group styling */
+.go-back-button, .button-group {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: pixel;
+  font-size: 1.2rem;
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Prevent hover effect on touch devices */
+@media (hover: hover) {
+  .go-back-button:hover, .button-group:hover {
+    color: #ddd;
+  }
+}
+
+/* Page transition animation */
+@keyframes zoomIn {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.5); /* Adjust scale for zoom effect */
+    opacity: 0;
+  }
+}
+
+.zoom-transition {
+  animation: zoomIn 0.7s ease forwards;
+}
 .go-back-button {
-  font-family: pixel; /* Or use your custom font */
+  position: fixed;
+  font-family: pixel;
+  bottom: 20px;
+  left: 28%; /* Center horizontally */
+  transform: translateX(-50%); /* Centering trick */
+  z-index: 10;
+  padding: 12px 20px;
+  color: white;
+  background: transparent; /* Transparent background */
+  border: 2px solid #e70bcd; /* Border color */
+  border-radius: 8px; /* Rounded corners */
   font-size: 20px;
-  font-weight: bold;
-  color: #ffffff; /* Text color */
-  text-decoration: none; /* Remove underline */
-  background: none; /* No background */
-  border: none; /* No border */
-  cursor: pointer; /* Pointer cursor */
-  padding: 10px 20px; /* Add padding */
-  position: absolute; /* Use absolute positioning */
-  bottom: 80px; /* Position it 20px from the bottom */
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Offset to perfectly center */
-  z-index: 10; /* Ensure it appears on top of other elements */
-  transition: color 0.3s ease; /* Smooth hover transition */
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover and animation */
+  animation: idlePulse 2s infinite ease-in-out; /* Idling animation */
+}
+
+/* Remove the default browser blue outline */
+.go-back-button:focus {
+  outline: none; /* No focus outline */
+}
+.go-back-button {
+  background-color: transparent;
+  color: white;  /* Optional: Change the text color to white for better visibility */
+  border: 2px solid #e70bcd; /* Optional: Add a border for better definition */
+}
+
+.go-back-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);  /* Optional: Add a slight white background on hover */
+}
+
+
+/* Idling animation for button (gentle pulsing) */
+@keyframes idlePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1); /* Slightly larger */
+    opacity: 0.8;
+  }
 }
 
 /* Hover effect */
 .go-back-button:hover {
-  color: #ddd; /* Slightly lighter text on hover */
+  background: #e70bcd; /* Add hover background color */
+  color: white; /* Keep text color white */
+  transform: scale(1.05); /* Slightly grow on hover */
+  box-shadow: 0px 0px 10px #e70bcd; /* Glow effect */
 }
+
+/* Click effect (animation) */
+.go-back-button:active {
+  transform: scale(0.95); /* Shrink slightly when clicked */
+  background: #e70bcd; /* Keep the background color */
+  color: #fff;
+  box-shadow: 0px 0px 5px #e70bcd; /* Slightly smaller glow on click */
+  animation: clickEffect 0.2s ease-out; /* Apply click animation */
+}
+
+/* Click animation */
+@keyframes clickEffect {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+  
