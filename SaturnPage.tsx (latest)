@@ -1,0 +1,54 @@
+import React from 'react';
+import { IonButton, IonContent, IonFooter, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import { useHistory } from 'react-router-dom'; // Using useHistory for React Router v5
+import './SaturnPage.css';
+
+function SaturnPage() {
+  const saturnImageUrl = 'https://i.seadn.io/gae/Y8p-LrKZgkcJwdkW9tzxb8T2PVbfCITi-x-25WLAntUsS_UKzrmO8jxnn6u-n2k9UyN2-ukyp-8t6H92-8vk_XK8wzaqh9UBWXStJQ?auto=format&dpr=1&w=384';
+  const saturnLink = 'https://example.com/saturn'; // Update with the relevant link
+
+  const history = useHistory();  // Using useHistory for navigation in React Router v5
+
+  const handleGoBack = () => {
+    history.push('/planet-page');  // Use history.push to navigate to the previous page
+  };
+
+  return (
+    <>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Saturn Page</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent className="saturn-page content"> {/* Add class to scope styles */}
+        <div className="background-image"></div>
+        <div className="container">
+          <a
+            href={saturnLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="container-image-link"
+          >
+            <img src={saturnImageUrl} alt="Saturn" className="container-image" />
+          </a>
+          <div className="container-text">SATURN</div>
+          <div className="description-text">
+            <p>SATURN IS THE SIXTH PLANET FROM THE SUN, FAMOUS FOR ITS SPECTACULAR RINGS MADE OF ICE AND ROCK PARTICLES. IT IS THE SECOND LARGEST PLANET IN THE SOLAR SYSTEM AND HAS MANY MOONS.</p>
+          </div>
+        </div>
+        <IonButton className="Saturn-go-back-button" onClick={handleGoBack}>
+          GO BACK
+        </IonButton>
+      </IonContent>
+
+      <IonFooter>
+        <IonToolbar>
+          <IonTitle>Footer</IonTitle>
+        </IonToolbar>
+      </IonFooter>
+    </>
+  );
+}
+
+export default SaturnPage;
