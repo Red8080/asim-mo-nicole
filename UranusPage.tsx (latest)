@@ -1,0 +1,54 @@
+import React from 'react';
+import { IonContent, IonFooter, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
+import './UranusPage.css'; // Make sure to create and update UranusPage.css for specific styling
+
+const UranusPage: React.FC = () => {
+  const history = useHistory();
+
+  const handleGoBack = () => {
+    history.push('/planet-page'); // Navigate back to the planet-page or previous page
+  };
+
+  const uranusImageUrl = 'https://static.vecteezy.com/system/resources/thumbnails/048/106/065/small_2x/blue-planet-pixel-art-png.png';
+  const uranusLink = 'https://example.com/uranus';
+
+  return (
+    <>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Uranus Page</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent className="content">
+        <div className="background-image"></div>
+        <div className="container">
+          <a
+            href={uranusLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="container-image-link"
+          >
+            <img src={uranusImageUrl} alt="Uranus" className="container-image" />
+          </a>
+          <div className="container-text">URANUS</div>
+          <div className="description-text">
+            <p>URANUS IS THE SEVENTH PLANET FROM THE SUN, NOTED FOR ITS UNIQUE SIDEWAYS ROTATION AND FAINT RINGS. IT HAS A BLUE COLOR DUE TO METHANE IN ITS ATMOSPHERE AND IS ONE OF THE LARGEST GAS GIANTS.</p>
+          </div>
+        </div>
+        <IonButton className="uranus-go-back-button" onClick={handleGoBack}>
+          GO BACK
+        </IonButton>
+      </IonContent>
+
+      <IonFooter>
+        <IonToolbar>
+          <IonTitle>Footer</IonTitle>
+        </IonToolbar>
+      </IonFooter>
+    </>
+  );
+};
+
+export default UranusPage;
