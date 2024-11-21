@@ -1,0 +1,105 @@
+MarsPage.css
+
+.content {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://cdn.mos.cms.futurecdn.net/HuGGeENt6kGyixe3hT9tnY.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  
+  .container {
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid #ebe2e200;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+  }
+  
+  .container-image {
+    width: 200px;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+  
+  .container-text {
+    font-size: 30px; /* Increase the text size */
+    color: #ffffff;
+    line-height: 1.4;
+    font-weight: bold;
+    font-family: pixel;
+    margin-top: -290px;
+   
+  }
+  
+  @font-face {
+    font-family:pixel ;
+    src: url(PixelatedDisplay.ttf);
+  }
+  .description-text
+  {
+    font-size: 15px; /* Increase the text size */
+    color: #ffffff;
+    line-height: 1.4;
+    font-weight: bold;
+    font-family: pixel;
+    margin-top: 300px;
+  
+  }
+  .mars-go-back-button {
+    position: fixed;
+    font-family: pixel;
+    bottom: 20px; /* Ensure it stays at the bottom of the page */
+    left: 30%; /* Center horizontally */
+    transform: translateX(-50%); /* Centering trick */
+    z-index: 10;
+    padding: 12px 20px;
+    color: white;
+    background: transparent; /* Transparent background */
+    border: 2px solid #fff; /* White border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 18px; /* Adjust font size */
+    transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease; /* Smooth transition for hover and animation */
+    animation: idlePulse 2s infinite ease-in-out; /* Idling pulsing animation */
+    appearance: none; /* Remove default styles */
+    outline: none; /* Remove default focus styles */
+    background-color: transparent; /* Explicitly set background color */
+}
+
+  /* Hover effect */
+  .mars-go-back-button:hover {
+    color: #ddd; /* Slightly lighter text on hover */
+  }
+  
+  /* Flicker animation */
+  @keyframes flicker {
+    0%, 100% {
+      opacity: 1; /* Fully visible */
+    }
+    50% {
+      opacity: 0.7; /* Slightly transparent */
+    }
+  }
+  
+  
+  
