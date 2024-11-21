@@ -1,51 +1,109 @@
-import React, { useState } from 'react';
-import { IonContent, IonFooter, IonHeader, IonTitle, IonToolbar, IonButton, IonIcon } from '@ionic/react';
-import { Link } from 'react-router-dom';
-import { chevronForwardCircleOutline, chevronBackCircleOutline } from 'ionicons/icons';
+import React, { useState, useEffect } from 'react';
+import { IonContent, IonFooter, IonHeader, IonTitle, IonToolbar, IonIcon } from '@ionic/react';
+import { volumeHigh, volumeMute } from 'ionicons/icons';  // Import volume icons
+import { useLocation, useHistory } from 'react-router-dom';
 import './PlanetPage.css';
 
 const imageData = [
-  { url: 'https://openseauserdata.com/files/6ae921fc86fee3c6592f5f217209083d.png', link: '/mercury-page' },
-  { url: 'https://i.seadn.io/gae/wCTL3tECeacHsQRgv8X-yx1L1wZXl76pPcKPgweRi-HXKqj_mu__QMKq_mQ7mQBYETFtL6fSXjVnPmCQ7oAB8vf4S9Fi0hhUcrBL9A?auto=format&dpr=1&w=384', link: '/venus-page' },
-  { url: 'https://i.seadn.io/gae/Ou8NsG0vKnbK01KMTGW0ZlDAuNkDQUwKP0aNfsunNdZCML2ZNRrpjjoL28x7VC17EXI0WmRECk2CDpOc4gQGvHSK616tEgbgtBFocA?auto=format&dpr=1&w=1000', link: '/earth-page' },
-  { url: 'https://openseauserdata.com/files/fe26e80b6d3670342a9816edfe2390fc.png', link: '/mars' },
-  { url: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b0b7f079-2f3a-4895-8dda-4f6bdb7a6659/db8siqg-5bf31fee-df61-41c2-8a40-3581c95fb16f.png', link: '/jupiter' },
-  { url: 'https://i.seadn.io/gae/Y8p-LrKZgkcJwdkW9tzxb8T2PVbfCITi-x-25WLAntUsS_UKzrmO8jxnn6u-n2k9UyN2-ukyp-8t6H92-8vk_XK8wzaqh9UBWXStJQ?auto=format&dpr=1&w=384', link: '/saturn' },
-  { url: 'https://static.vecteezy.com/system/resources/thumbnails/048/106/065/small_2x/blue-planet-pixel-art-png.png', link: '/uranus' },
-  { url: 'https://i.seadn.io/gae/2bBWp5GeqrTPuhMz9BrtLHjJ-_eh-HTASyKZ35oUcSrUY7sXrUGRvq47rbt0z7jUREm0nmGYvfYMqgZtbLN-IKPJlU5Gx6P1Bv1oIQ?auto=format&dpr=1&w=1000', link: '/neptune' },
+  { name: 'Mercury', url: 'https://openseauserdata.com/files/6ae921fc86fee3c6592f5f217209083d.png', link: '/mercury-page' },
+  { name: 'Venus', url: 'https://i.seadn.io/gae/wCTL3tECeacHsQRgv8X-yx1L1wZXl76pPcKPgweRi-HXKqj_mu__QMKq_mQ7mQBYETFtL6fSXjVnPmCQ7oAB8vf4S9Fi0hhUcrBL9A?auto=format&dpr=1&w=384', link: '/venus-page' },
+  { name: 'Earth', url: 'https://i.seadn.io/gae/Ou8NsG0vKnbK01KMTGW0ZlDAuNkDQUwKP0aNfsunNdZCML2ZNRrpjjoL28x7VC17EXI0WmRECk2CDpOc4gQGvHSK616tEgbgtBFocA?auto=format&dpr=1&w=1000', link: '/earth-page' },
+  { name: 'Mars', url: 'https://openseauserdata.com/files/fe26e80b6d3670342a9816edfe2390fc.png', link: '/mars-page' },
+  { name: 'Jupiter', url: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b0b7f079-2f3a-4895-8dda-4f6bdb7a6659/db8siqg-5bf31fee-df61-41c2-8a40-3581c95fb16f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2IwYjdmMDc5LTJmM2EtNDg5NS04ZGRhLTRmNmJkYjdhNjY1OVwvZGI4c2lxZy01YmYzMWZlZS1kZjYxLTQxYzItOGE0MC0zNTgxYzk1ZmIxNmYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.teUfI74QRgos6JUEmAbg9IuH5uYbtoFdlQ0lnAdaFFI', link: '/jupiter-page' },
+  { name: 'Saturn', url: 'https://i.seadn.io/gae/Y8p-LrKZgkcJwdkW9tzxb8T2PVbfCITi-x-25WLAntUsS_UKzrmO8jxnn6u-n2k9UyN2-ukyp-8t6H92-8vk_XK8wzaqh9UBWXStJQ?auto=format&dpr=1&w=384', link: '/saturn-page' },
+  { name: 'Uranus', url: 'https://static.vecteezy.com/system/resources/thumbnails/048/106/065/small_2x/blue-planet-pixel-art-png.png', link: '/uranus-page' },
+  { name: 'Neptune', url: 'https://i.seadn.io/gae/2bBWp5GeqrTPuhMz9BrtLHjJ-_eh-HTASyKZ35oUcSrUY7sXrUGRvq47rbt0z7jUREm0nmGYvfYMqgZtbLN-IKPJlU5Gx6P1Bv1oIQ?auto=format&dpr=1&w=1000', link: '/neptune-page' },
 ];
 
 function PlanetPage() {
+  const location = useLocation();
+  const history = useHistory();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [fade, setFade] = useState('fade-in');
+  const [pageTransition, setPageTransition] = useState(false);
+
+  // Music player state and functions
+  const [audio] = useState(new Audio('bgmusic.mp3')); // Update with your audio URL
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const indexFromUrl = queryParams.get('index');
+    if (indexFromUrl !== null) {
+      setCurrentIndex(parseInt(indexFromUrl, 10));
+    }
+  }, [location]);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % imageData.length);
+    setFade('fade-out');
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % imageData.length);
+      setFade('fade-in');
+    }, 500);
   };
 
   const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + imageData.length) % imageData.length);
+    setFade('fade-out');
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + imageData.length) % imageData.length);
+      setFade('fade-in');
+    }, 500);
+  };
+
+  const handlePageTransition = (link: string) => {
+    setPageTransition(true);
+    setTimeout(() => {
+      history.push(link);
+    }, 700);
+  };
+
+  const togglePlay = () => {
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play().catch((error) => console.error('Audio playback error:', error));
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  const toggleMute = () => {
+    audio.muted = !isMuted;
+    setIsMuted(!isMuted);
   };
 
   return (
     <>
-      <IonContent className="content">
+      <IonContent className={`content ${pageTransition ? 'page-transition' : ''}`}>
         <div className="planet-page">
+          <h1 className="planet-name">{imageData[currentIndex].name}</h1>
           <p className="tap-info-text">TAP THE PLANET FOR MORE INFO</p>
-          <Link to={imageData[currentIndex].link} className="container">
+          <div onClick={() => handlePageTransition(imageData[currentIndex].link)} className="container">
             <img
               src={imageData[currentIndex].url}
               alt="Planet"
-              className={`container-image rotating-planet`} // Add the rotating animation to the current image
+              className={`container-image ${fade}`}
             />
-          </Link>
-          <div className="button-group">
-            <IonButton onClick={handlePrevious} className="icon-button">
-              <IonIcon icon={chevronBackCircleOutline} />
-            </IonButton>
-            <IonButton onClick={handleNext} className="icon-button">
-              <IonIcon icon={chevronForwardCircleOutline} />
-            </IonButton>
           </div>
+          <div className="button-group">
+            {currentIndex > 0 ? (
+              <button onClick={handlePrevious} className="icon-button">PREV</button>
+            ) : (
+              <div className="placeholder-button" />
+            )}
+            {currentIndex < imageData.length - 1 ? (
+              <button onClick={handleNext} className="icon-button">NEXT</button>
+            ) : (
+              <div className="placeholder-button" />
+            )}
+          </div>
+        </div>
+
+        {/* Background music controls at the top right */}
+        <div className="music-controls">
+          <button className="volume-button" onClick={toggleMute}>
+            <IonIcon icon={isMuted ? volumeMute : volumeHigh} />
+          </button>
         </div>
       </IonContent>
 
