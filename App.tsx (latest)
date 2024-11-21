@@ -1,70 +1,80 @@
-import { Redirect, Route, useHistory } from 'react-router-dom';
-import { IonApp, IonButton, IonContent, IonHeader, IonRouterOutlet, IonTitle, IonToolbar, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import Home from './pages/Home';
+import SplashScreen from './pages/SplashScreen';
 import PlanetPage from './pages/PlanetPage';
 import EarthPage from './pages/EarthPage';
 import VenusPage from './pages/VenusPage';
 import MercuryPage from './pages/MercuryPage';
-import SplashPage from './pages/SplashPage';
+import MarsPage from './pages/MarsPage';
+import JupiterPage from './pages/JupiterPage';
+import SaturnPage from './pages/SaturnPage';  // Import SaturnPage
+import UranusPage from './pages/UranusPage';  // Import UranusPage
+import NeptunePage from './pages/NeptunePage';  // Import NeptunePage
 
-
-
-/* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
-
-/* Basic CSS for apps built with Ionic */
 import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
 import '@ionic/react/css/typography.css';
-
-/* Optional CSS utils that can be commented out */
 import '@ionic/react/css/padding.css';
 import '@ionic/react/css/float-elements.css';
 import '@ionic/react/css/text-alignment.css';
 import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
-
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* import '@ionic/react/css/palettes/dark.always.css'; */
-/* import '@ionic/react/css/palettes/dark.class.css'; */
-import '@ionic/react/css/palettes/dark.system.css';
-
-/* Theme variables */
 import './theme/variables.css';
-
-/* Import your PlanetPage.css and EarthPage.css files here */
-import './pages/PlanetPage.css';
-import './pages/EarthPage.css';
-import './pages/VenusPage.css';
 
 setupIonicReact();
 
-const App: React.FC = () => (
+const App: React.FC = () => {
+  const [showSplash, setShowSplash] = useState(true); // State to control SplashScreen visibility
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false); // State to control music playback
+
+  const handleSplashComplete = () => {
+    setShowSplash(false); // Hide SplashScreen after timeout
+  };
+
+  // Start music after splash screen
+  useEffect(() => {
+    if (!showSplash && !isMusicPlaying) {
+      setIsMusicPlaying(true);
+    }
+  }, [showSplash, isMusicPlaying]);
+
+  return (
     <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-        <Route path="/splash-page" component={SplashPage} exact />
-        <Route path="/planet-page" component={PlanetPage} exact />
-        <Route path="/earth-page" component={EarthPage} exact />
-        <Route path="/venus-page" component={VenusPage} exact />
-        <Route path="/mercury-page" component={MercuryPage} exact />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+      <Router>
+        <IonRouterOutlet>
+          {showSplash ? (
+            // Show SplashScreen if showSplash is true
+            <SplashScreen onComplete={handleSplashComplete} />
+          ) : (
+            <Switch>
+              {/* Home Route */}
+              <Route exact path="/home" component={Home} />
+
+              {/* Redirect from Root to Home */}
+              <Route exact path="/">
+                <Redirect to="/home" />
+              </Route>
+
+              {/* Other Routes */}
+              <Route exact path="/planet-page" component={PlanetPage} />
+              <Route exact path="/earth-page" component={EarthPage} />
+              <Route exact path="/venus-page" component={VenusPage} />
+              <Route exact path="/mercury-page" component={MercuryPage} />
+              <Route exact path="/mars-page" component={MarsPage} />
+              <Route exact path="/jupiter-page" component={JupiterPage} />
+              <Route exact path="/saturn-page" component={SaturnPage} />
+              <Route exact path="/uranus-page" component={UranusPage} />  {/* Route for UranusPage */}
+              <Route exact path="/neptune-page" component={NeptunePage} />  {/* New Route for NeptunePage */}
+            </Switch>
+          )}
+        </IonRouterOutlet>
+      </Router>
+    </IonApp>
+  );
+};
 
 export default App;
