@@ -1,14 +1,15 @@
+import React, { useState } from 'react';
 import { IonButton, IonContent, IonFooter, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom'; // Change to useHistory for React Router v5
 import './EarthPage.css';
 
 function EarthPage() {
   const earthImageUrl = 'https://i.seadn.io/gae/Ou8NsG0vKnbK01KMTGW0ZlDAuNkDQUwKP0aNfsunNdZCML2ZNRrpjjoL28x7VC17EXI0WmRECk2CDpOc4gQGvHSK616tEgbgtBFocA?auto=format&dpr=1&w=1000';
-
-  const history = useHistory();
+  
+  const history = useHistory();  // Use useHistory for navigation in React Router v5
 
   const handleGoBack = () => {
-    history.push('/planet-page');
+    history.push('/planet-page');  // Use history.push to navigate to the previous page
   };
 
   return (
@@ -35,8 +36,8 @@ function EarthPage() {
             <p>EARTH IS THE THIRD PLANET FROM THE SUN AND THE ONLY KNOWN BODY IN THE UNIVERSE TO SUPPORT LIFE. IT HAS A DIVERSE CLIMATE, LANDSCAPES, AND AN ATMOSPHERE RICH IN OXYGEN AND WATER.</p>
           </div>
         </div>
-        <IonButton className="go-back-button" onClick={handleGoBack}>
-          Go Back
+        <IonButton className="Earth-go-back-button" onClick={handleGoBack}>
+          GO BACK
         </IonButton>
       </IonContent>
 
