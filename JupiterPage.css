@@ -1,0 +1,134 @@
+MarsPage.css
+
+.content {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://cdn.mos.cms.futurecdn.net/HuGGeENt6kGyixe3hT9tnY.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  
+  .container {
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid #ebe2e200;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+  }
+  
+  .container-image {
+    width: 200px;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+  
+  .container-text {
+    font-size: 30px; /* Increase the text size */
+    color: #ffffff;
+    line-height: 1.4;
+    font-weight: bold;
+    font-family: pixel;
+    margin-top: -290px;
+  }
+  @font-face {
+    font-family:pixel ;
+    src: url(PixelatedDisplay.ttf);
+  }
+  .description-text
+  {
+    font-size: 15px; /* Increase the text size */
+    color: #ffffff;
+    line-height: 1.4;
+    font-weight: bold;
+    font-family: pixel;
+    margin-top: 300px;
+  
+  }
+  .Jupiter-go-back-button {
+    position: fixed;
+    font-family: pixel;
+    bottom: 20px;
+    left: 28%; /* Center horizontally */
+    transform: translateX(-50%); /* Centering trick */
+    z-index: 10;
+    padding: 12px 20px;
+    color: white;
+    background: transparent; /* Transparent background */
+    border: 2px solid #ffffff; /* Border color */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 20px;
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover and animation */
+    animation: idlePulse 2s infinite ease-in-out; /* Idling animation */
+  }
+  
+  /* Remove the default browser blue outline */
+  .Jupiter-go-back-button:focus {
+    outline: none; /* No focus outline */
+  }
+  
+  /* Idling animation for button (gentle pulsing) */
+  @keyframes idlePulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1); /* Slightly larger */
+      opacity: 0.8;
+    }
+  }
+  
+  /* Hover effect */
+  .Jupiter-go-back-button:hover {
+    background: #e70bcd; /* Add hover background color */
+    color: white; /* Keep text color white */
+    transform: scale(1.05); /* Slightly grow on hover */
+    box-shadow: 0px 0px 10px #e70bcd; /* Glow effect */
+  }
+  
+  /* Click effect (animation) */
+  .Jupiter-go-back-button:active {
+    transform: scale(0.95); /* Shrink slightly when clicked */
+    background: #e70bcd; /* Keep the background color */
+    color: #fff;
+    box-shadow: 0px 0px 5px #e70bcd; /* Slightly smaller glow on click */
+    animation: clickEffect 0.2s ease-out; /* Apply click animation */
+  }
+  
+  /* Click animation */
+  @keyframes clickEffect {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(0.9);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  
