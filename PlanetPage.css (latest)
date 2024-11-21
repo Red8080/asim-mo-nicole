@@ -1,3 +1,4 @@
+/* Planet page container */
 .planet-page {
   background-image: url('https://cdn.mos.cms.futurecdn.net/HuGGeENt6kGyixe3hT9tnY.jpg');
   background-size: cover;
@@ -12,71 +13,334 @@
   font-family: 'pixel', sans-serif;
   color: white;
   position: relative;
+  overflow: hidden;
 }
 
-.container {
-  text-align: center;
-  position: relative;
+/* Add your custom image above the planet image */
+.image-holder {
+  position: absolute;
+  top: -10px; /* Adjust this value to control the distance above the planet */
+  width: 200px;  /* Set the width */
+  height: 200px; /* Set the height */
+  background-image: url('./assets/your-image.jpg'); /* Update with the path to your custom image */
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 2; /* Ensure this image appears above the planet */
 }
 
 /* Rotate animation applied only to the planet image */
 .container-image {
-  width: 1000px; /* Adjust this size to your preference */
-  height: auto;
-  animation: planetRotation 10s infinite linear; /* Apply rotation animation */
+  width: 40vw; /* Set size relative to the viewport width */
+  max-width: 1000px; /* Maximum size to prevent excessive scaling */
+  height: 300px; /* Maintain aspect ratio */
+  animation: planetRotation 10s infinite linear;
+  transition: opacity 0.5s ease-in-out;
 }
 
+/* Styling for the tap text (positioned below the planet) */
+.tap-info-text {
+  font-family: 'pixel', sans-serif;
+  font-size: 18px;
+  color: white;
+  text-align: center;
+
+  animation: fadeInOut 2s infinite;
+  margin-bottom: -80px;
+  margin-top: -100px;
+}
+
+/* Button group styling */
 .button-group {
-  margin-top: 80px;
   display: flex;
-  gap: 20px;
+  gap: 10px;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Styling for the icon buttons */
+.icon-button {
+  font-family: 'pixel', sans-serif; /* Custom font */
+  
+  color: white; /* White text color */
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: color 0.3s ease, transform 0.1s ease; /* Smooth feedback for animations */
+  animation: idlePulse 2s infinite ease-in-out; /* Added idling animation */
+  margin-bottom: 10px;
+}
+
+/* Hover effect for the buttons */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
 }
 
 .icon-button {
-  background-color: rgba(255, 255, 255, 0); /* Make background transparent */
-  padding: 0;
-  border: none;
-  color: rgb(255, 255, 255); /* Adjust color to match your theme */
-  font-size: 36px; /* Adjust icon size as needed */
+  padding: 54px; /* TO EDIT NEXT BACK DISTANCE */
+  font-size: 30px;
+  cursor: pointer;
 }
 
-.tap-info-text {
-  font-family: 'pixel', sans-serif;
-  font-size: 18px; /* Adjust size as needed */
-  color: white;
-  text-align: center;
-  margin-bottom: -30px; /* Adjust spacing as needed */
-  animation: fadeInOut 2s infinite; /* Apply animation */
+.placeholder-button {
+  width: 100px; /* Same width as your buttons */
+  height: 40px; /* Same height as your buttons */
 }
 
+
+/* Click effect for the buttons */
+.icon-button:active {
+  animation: shrinkClick 0.1s ease, idlePulse 2s infinite ease-in-out; /* Ensure idlePulse resumes after click */
+  color: #ff09fb; /* Temporary color change on click */
+}
+
+/* Idling animation (pulsing effect) */
+@keyframes idlePulse {
+  0%, 100% {
+    transform: scale(1); /* Default size */
+  }
+  50% {
+    transform: scale(1.1); /* Slightly larger */
+  }
+}
+
+/* Shrink animation on click */
+@keyframes shrinkClick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Fading animation */
 @keyframes fadeInOut {
   0%, 100% {
-    opacity: 0; /* Fully transparent at start and end */
+    opacity: 0;
   }
   50% {
-    opacity: 1; /* Fully visible at midpoint */
+    opacity: 1;
   }
 }
 
-/* Rotating animation for the planets */
+/* Rotating animation */
 @keyframes planetRotation {
   0% {
-    transform: rotate(0deg); /* Start at 0 degrees */
+    transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg); /* Rotate 360 degrees */
+    transform: rotate(360deg);
   }
 }
 
-/* Floating up and down animation for Saturn */
-@keyframes planetIdleAnimation {
-  0% {
-    transform: translateY(0); /* Normal position */
+/* Smooth fade transition for planet image */
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+/* Smooth transition for zoom-in effect */
+@keyframes zoomInTransition {
+  from {
+    transform: scale(1);
+    opacity: 1;
   }
-  50% {
-    transform: translateY(-10px); /* Float up slightly */
-  }
-  100% {
-    transform: translateY(0); /* Back to normal position */
+  to {
+    transform: scale(1.2); /* Slight zoom-in effect */
+    opacity: 0;
   }
 }
+
+.page-transition {
+  animation: zoomInTransition 0.7s ease forwards;
+}
+
+/* Add these classes for the page transition */
+.fade-out {
+  opacity: 0;
+  transform: scale(1.1); /* Slight zoom-in as it fades out */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Heading for planet name */
+.planet-name {
+    font-family: 'pixel', sans-serif;
+    font-size: 24px;
+    color: white;
+    text-align: center;
+    margin-bottom: 115px;
+    text-transform: uppercase; /* Optional, makes the name uppercase */
+}
+
+/* Planet name (larger version) */
+.planet-name {
+    font-family: 'pixel', sans-serif;
+    font-size: 50px; /* Adjust the font size for the planet name */
+    color: white;
+    text-align: center;
+    margin-top: 5px; /* Adjust spacing from the top */
+    text-transform: uppercase; /* Optional, makes the name uppercase */
+    animation: idlePulse 2s infinite ease-in-out; /* Added pulsing effect */
+}
+
+/* Keyframe animation for pulsing effect */
+@keyframes idlePulse {
+  0%, 100% {
+    transform: scale(1); /* Default size */
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1); /* Slightly larger */
+    opacity: 0.8; /* Optional, make it a bit faded in the middle of the pulse */
+  }
+}
+/* Smooth fade transition for planet images */
+.fade-in {
+  opacity: 1;
+  transform: scale(1); /* Default scale */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Unique entry animations for each planet */
+@keyframes mercuryEntry {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) scale(0.5); /* Comes in from the left */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes venusEntry {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px) rotate(-45deg); /* Drops in from the top */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes earthEntry {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(360deg); /* Grows in with rotation */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes marsEntry {
+  0% {
+    opacity: 0;
+    transform: translateX(100px) scale(0.5); /* Comes in from the right */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes jupiterEntry {
+  0% {
+    opacity: 0;
+    transform: translateY(100px) scale(0.5); /* Rises up from below */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes saturnEntry {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg); /* Expands with rotation */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes uranusEntry {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px) scale(0.5); /* Falls in */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes neptuneEntry {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) rotate(45deg); /* Slides in with rotation */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+/* Assigning unique animations */
+.mercury.fade-in {
+  animation: mercuryEntry 3s ease-in-out;
+}
+
+.venus.fade-in {
+  animation: venusEntry 1s ease-in-out;
+}
+
+.earth.fade-in {
+  animation: earthEntry 1s ease-in-out;
+}
+
+.mars.fade-in {
+  animation: marsEntry 1s ease-in-out;
+}
+
+.jupiter.fade-in {
+  animation: jupiterEntry 1s ease-in-out;
+}
+
+.saturn.fade-in {
+  animation: saturnEntry 1s ease-in-out;
+}
+
+.uranus.fade-in {
+  animation: uranusEntry 1s ease-in-out;
+}
+
+.neptune.fade-in {
+  animation: neptuneEntry 3s ease-in-out;
+}
+
